@@ -75,20 +75,19 @@ from sklearn.metrics import accuracy_score, log_loss, \
 classifiers =[LogisticRegression(),
               KNeighborsClassifier(),
               DecisionTreeClassifier(),
-              # SVC(kern    el='rbf'),
+              SVC(kernel='rbf'),
               GaussianNB(),
               BaggingClassifier(),
               RandomForestClassifier(),
               AdaBoostClassifier(),
               MLPClassifier(),
-              QuadraticDiscriminantAnalysis(),
-
+              QuadraticDiscriminantAnalysis()
               ]
 
 
 ##model learning one by one iterrative...
 for learner in classifiers:
-    model = AdaBoostClassifier(learner)
+    model = learner
     model = model.fit(X_train,y_train)
 ##making a new label:: y_predicted from X_test from the learned model.
     y_predicted = model.predict(X_test)
