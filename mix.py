@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 # Data = pd.read_csv('monodata.csv', header=None) ## not to remove the first row
 # Data = pd.read_csv('bidata.csv', header=None) ## not to remove the first row
 # Data = pd.read_csv('tridata.csv', header=None) ## not to remove the first row
-Data = pd.read_csv('mono_biData.', header=None) ## not to remove the first row
+Data = pd.read_csv('mono_biData.csv', header=None) ## not to remove the first row
 
 
 # Data = Data.drop_duplicates() ## to get the uniqe value and romove duplicate values that leads to a overfitting problem
