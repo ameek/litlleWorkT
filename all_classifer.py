@@ -5,11 +5,12 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 ##data collection
-Data = pd.read_csv('monodata.csv', header=None) ## not to remove the first row
+# Data = pd.read_csv('monodata.csv', header=None) ## not to remove the first row
 #Data = pd.read_csv('bidata.csv', header=None) ## not to remove the first row
 # Data = pd.read_csv('tridata.csv', header=None) ## not to remove the first row
+Data = pd.read_csv('mono_biData.csv', header=None) ## not to remove the first row
 
-Data = Data.drop_duplicates() ## to get the uniqe value and romove duplicate values that leads to a overfitting problem
+# Data = Data.drop_duplicates() ## to get the uniqe value and romove duplicate values that leads to a overfitting problem
 
 row,col = Data.shape
 print(Data.shape) ##optional for geting to know the (row,col) of the datasets

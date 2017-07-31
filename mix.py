@@ -5,10 +5,11 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 ##data collection
-#Data = pd.read_csv('monodata.csv', header=None) ## not to remove the first row
-#Data = pd.read_csv('bidata.csv', header=None) ## not to remove the first row
+# Data = pd.read_csv('monodata.csv', header=None) ## not to remove the first row
+# Data = pd.read_csv('bidata.csv', header=None) ## not to remove the first row
 # Data = pd.read_csv('tridata.csv', header=None) ## not to remove the first row
-Data = pd.read_csv('mono_biData.csv', header=None) ## not to remove the first row
+Data = pd.read_csv('mono_biData.', header=None) ## not to remove the first row
+
 
 # Data = Data.drop_duplicates() ## to get the uniqe value and romove duplicate values that leads to a overfitting problem
 
@@ -52,9 +53,20 @@ scale = StandardScaler()
 X_train = scale.fit_transform(X_train)
 X_test = scale.fit_transform(X_test)
 
+
 ## Its time to use the Algorithms :D
 ##calling the algorithms from library
+
+from sklearn.linear_model import LogisticRegression
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.tree import DecisionTreeClassifier
 from sklearn.svm import SVC
+from sklearn.naive_bayes import GaussianNB
+from sklearn.ensemble import BaggingClassifier, \
+                             RandomForestClassifier,\
+                             AdaBoostClassifier,\
+                             ExtraTreesClassifier
+from sklearn.discriminant_analysis import QuadraticDiscriminantAnalysis
 from sklearn.neural_network import MLPClassifier
 
 ##now to evaluate the acuurecy and others
@@ -62,10 +74,15 @@ from sklearn.metrics import accuracy_score, log_loss, \
                             classification_report, \
                             confusion_matrix
 
-classifiers =[SVC(kernel='rbf',),
-              SVC(kernel='linear', ),
-              SVC(kernel='sigmoid'),
-              SVC(kernel='poly'),
+
+
+classifiers =[BaggingClassifier(GaussianNB()),
+              BaggingClassifier(KNeighborsClassifier(algorithm="kd_tree")),
+              RandomForestClassifier(n_estimators=500),
+              BaggingClassifier(ExtraTreesClassifier()),
+              AdaBoostClassifier(),
+              ExtraTreesClassifier(),
+              KNeighborsClassifier(n_neighbors=5)
               ]
 
 
